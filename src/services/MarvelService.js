@@ -21,10 +21,20 @@ class MarvelService {
         return this._transformCharacter(res.data.data.results[0]);
     }
 
+    changeDescr = (descr) => {
+        let cutDescr = descr;
+        if (!cutDescr) {
+            cutDescr = 'Description is missing...';
+        } else if (descr.length > 140) {
+            cutDescr = `${descr.slice(0, 140)}...`;
+        }
+        return cutDescr;
+    }
+
     _transformCharacter = (res) => {
         return {
             name: res.name,
-            descr: res.description,
+            descr: this.changeDescr(res.description),
             thumbnail: res.thumbnail.path + '.' + res.thumbnail.extension,
             homepage: res.urls[0].url,
             wiki: res.urls[1].url
