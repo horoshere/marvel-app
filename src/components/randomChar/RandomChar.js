@@ -7,11 +7,7 @@ import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 
 class RandomChar extends React.Component {
-    constructor() {
-        super();
-        this.updateChar();
-    }
-
+    
     state = {
         char: {},
         loading: true,
@@ -34,6 +30,10 @@ class RandomChar extends React.Component {
         .getCharacter(id)
         .then(this.onCharLoaded)
         .catch(this.onError);
+    }
+
+    componentDidMount() {
+        this.updateChar();
     }
 
     render() {
