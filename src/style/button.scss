@@ -21,6 +21,9 @@
         line-height: 18px;
         padding: 0 18px;
         transition: none;
+        &:active {
+            color: #8B0000;
+          }
         &::before {
             border-color: $main-color transparent;
             border-style: solid;
