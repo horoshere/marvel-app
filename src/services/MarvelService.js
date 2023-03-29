@@ -31,8 +31,19 @@ class MarvelService {
         return cutDescr;
     }
 
+    // changeThumbnail = (thumbnail) => {
+    //     let styleThumbnail;
+    //     if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
+    //         styleThumbnail = "objectFit: 'contain'";
+    //     } else {
+    //         styleThumbnail = "objectFit: 'cover'";
+    //     }
+    //     return styleThumbnail;
+    // }
+
     _transformCharacter = (res) => {
         return {
+            id: res.id,
             name: res.name,
             descr: this.changeDescr(res.description),
             thumbnail: res.thumbnail.path + '.' + res.thumbnail.extension,
