@@ -72,11 +72,11 @@ class RandomChar extends React.Component {
 
 const View = ({char}) => {
     const {thumbnail, name, descr, homepage, wiki} = char;
-    let styleThumbnail = thumbnail;
+    let styleThumbnail;
     if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
-        styleThumbnail = <img style={{objectFit: 'contain'}} src={styleThumbnail} alt="Random character" className="randomchar__img"/>;
+        styleThumbnail = <img style={{objectFit: 'contain'}} src={thumbnail} alt="Random character" className="randomchar__img"/>;
     } else {
-        styleThumbnail = <img src={styleThumbnail} alt="Random character" className="randomchar__img"/>;
+        styleThumbnail = <img src={thumbnail} alt="Random character" className="randomchar__img"/>;
     }
         return (
             <div className="randomchar__block">
