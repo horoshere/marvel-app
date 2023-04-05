@@ -12,7 +12,8 @@ class CharList extends React.Component {
         loading: true,
         error: false,
         newItemLoading: false,
-        offset: 210
+        offset: 210,
+        charEnded: false
     }
 
     marvelService = new MarvelService();
@@ -29,11 +30,18 @@ class CharList extends React.Component {
     }
 
     onAllCharsLoaded = (res) => {
+        let ended = false;
+        if (res.length < 9) {
+            ended = true
+        }
+
+
         this.setState(({chars, offset}) => ({
             chars: [...chars, ...res], 
             loading: false, 
             newItemLoading: false,
-            offset: offset + 9
+            offset: offset + 9,
+            charEnded: ended
         }))
     }
 
@@ -46,7 +54,7 @@ class CharList extends React.Component {
     }
 
     render() {
-        const {chars, loading, error, newItemLoading, offset} = this.state;
+        const {chars, loading, error, newItemLoading, offset, charEnded} = this.state;
         const char = chars.map(item => {
             let styleThumbnail = item.thumbnail;
             if (item.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
@@ -76,6 +84,7 @@ class CharList extends React.Component {
                 <button 
                     className="button button__main button__long"
                     disabled={newItemLoading}
+                    style={{'display': charEnded ? 'none' : 'block'}}
                     onClick={() => this.updateAllChars(offset)}>
                     <div className="inner">load more</div>
                 </button>
