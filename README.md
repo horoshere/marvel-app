@@ -1,6 +1,6 @@
 # marvel-app 
 Это учебный проект из курса Ивана Петриченко, написанный на React JS с использованием **Классовых компонентов**.
-[Посмотреть](https://horoshere.github.io/movie-catalog-app)
+[Посмотреть](https://horoshere.github.io/marvel-app/)
 
 ## Описание проекта:
 
